@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="http://fonts.googleapis.com/css?family=Lato:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="nav">
+      <ul>
+        <li><a href="home">Home</a></li>
+        <li><a href="score">Score</a></li>
+        <li><a href="about">About</a></li>
+      </ul>
+    </section>
+    <section id="main">
+      <div id="title">
+        <h1 class="mainTitle">Welcome here !!!</h1>
+        <h3 class="instruction">
+          Your objective is to beat the croupier by getting a score the closest
+          to 21.
+        </h3>
+      </div>
+      <div id="game">
+        <div class="plate" id="plate">
+          <div class="containerCroupier" id="cardCroupierFront"></div>
+          <div class="score" id="scoreC"></div>
+          <div class="score" id="scoreP"></div>
+          <div class="containerPlayer" id="cardPlayerFront"></div>
+        </div>
+        <div class="button">
+          <button id="start">START</button>
+          <button id="add">ADD</button>
+          <button id="stop">STOP</button>
+        </div>
+      </div>
+      <div id="end"></div>
+    </section>
+  </body>
+  <script src="./logic.js"></script>
+  <script src="./main.js"></script>
+</html>

@@ -1,0 +1,119 @@
+* {
+  font-family: Lato;
+}
+
+/* Nav Bar */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #393e46;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  color: white;
+  display: block;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+/* Title */
+
+#title {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 30px;
+}
+
+/* Button at the end */
+
+.button {
+  text-align: center;
+}
+
+.button button {
+  background-color: #393e46;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  padding: 16px 32px;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+}
+
+/* Popup */
+
+#popupContainer {
+  height: 500px;
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#popup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* Plate */
+
+div .plate {
+  background-color: #eeeeee;
+  border-radius: 30px;
+  height: 600px;
+  margin: 20px auto;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+div .containerCroupier {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.cardCroupier,
+.cardPlayer {
+  height: 100px;
+  margin: 5px;
+  width: 71px;
+}
+
+#croupierFirst {
+  background-color: red;
+}
+
+div .containerPlayer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.score {
+  text-align: center;
+  font-size: 50px;
+}
