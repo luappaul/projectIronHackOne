@@ -20,16 +20,16 @@ class BlackGame {
   getScore(evt) {
     let sum = evt.reduce((acc, val) => {
       return acc + val;
-    });
+    }, 0);
     return sum;
   }
 
   getWinner(a, b) {
-    if (a > 21) return "YOU LOOSE";
-    else if (b > 21) return "YOU WIN";
-    else if (a > b) return "YOU WIN";
-    else if (a == b) return "YOU WIN";
-    else return "YOU LOOSE";
+    if (a > 21) return "L";
+    else if (b > 21) return "W";
+    else if (a > b) return "W";
+    else if (a == b) return "W";
+    else return "L";
   }
 
   playerLoose(res) {
