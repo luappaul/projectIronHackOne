@@ -34,7 +34,19 @@ var cards = [
   { name: "10_of_clubs", img: "10_of_clubs.png", value: 10 },
   { name: "10_of_diamonds", img: "10_of_diamonds.png", value: 10 },
   { name: "10_of_hearts", img: "10_of_hearts.png", value: 10 },
-  { name: "10_of_spades", img: "10_of_spades.png", value: 10 }
+  { name: "10_of_spades", img: "10_of_spades.png", value: 10 },
+  { name: "jack_of_clubs", img: "jack_of_clubs.png", value: 10 },
+  { name: "jack_of_diamonds", img: "jack_of_diamonds.png", value: 10 },
+  { name: "jack_of_hearts", img: "jack_of_hearts.png", value: 10 },
+  { name: "jack_of_spades", img: "jack_of_spades.png", value: 10 },
+  { name: "king_of_clubs", img: "king_of_clubs.png", value: 10 },
+  { name: "king_of_diamonds", img: "king_of_diamonds.png", value: 10 },
+  { name: "king_of_hearts", img: "king_of_hearts.png", value: 10 },
+  { name: "king_of_spades", img: "king_of_spades.png", value: 10 },
+  { name: "queen_of_clubs", img: "queen_of_clubs.png", value: 10 },
+  { name: "queen_of_diamonds", img: "queen_of_diamonds.png", value: 10 },
+  { name: "queen_of_hearts", img: "queen_of_hearts.png", value: 10 },
+  { name: "queen_of_spades", img: "queen_of_spades.png", value: 10 }
 ];
 
 var buttonStart = document.getElementById("start");
@@ -193,10 +205,10 @@ function addCroupierCard() {
     .insertAdjacentHTML("beforeend", card);
   startCardCroupier.push(remainingCard[0]);
   remainingCard.splice(0, 1);
-  document.getElementById("croupierFirst").innerHTML = "";
 }
 
 function discoverFirst() {
+  document.getElementById("croupierFirst").innerHTML = "";
   var first =
     `<div class="cardCroupier card" style="background: url(cards/` +
     startCardCroupier[0].img +
@@ -214,7 +226,7 @@ function discoverFirst() {
 function croupierLoop() {
   var i = setInterval(() => {
     if (countCroupierScore() < 16) {
-      return countCroupierScore(), addCroupierCard();
+      return addCroupierCard(), countCroupierScore();
     } else {
       return clearInterval(i);
     }
@@ -230,7 +242,7 @@ function playerCheckScore() {
       countCroupierScore(),
       croupierLoop(),
       discoverFirst(),
-      disabledButton(),
+      disabledStopButton(),
       setStartBtn(),
       reloadGame()
     );
@@ -240,6 +252,9 @@ function playerCheckScore() {
 function countCroupierScore() {
   var res = blackgame.getScore(blackgame.getValue(startCardCroupier));
   document.querySelector("#scoreC").innerHTML = res;
+  document.querySelector(
+    "#dealerS"
+  ).innerHTML = `<img src="./img/dealerScore.png" alt="yourScore" id="yourScore">`;
   return res;
 }
 
@@ -277,19 +292,35 @@ function deletePlate() {
   var b = document.getElementById("scoreC");
   var c = document.getElementById("scoreP");
   var d = document.getElementById("cardPlayerFront");
+  var e = document.getElementById("yourS");
+  var f = document.getElementById("vs");
+  var g = document.getElementById("dealerS");
   a.innerHTML = "";
   b.innerHTML = "";
   c.innerHTML = "";
   d.innerHTML = "";
+  e.innerHTML = "";
+  f.innerHTML = "";
+  g.innerHTML = "";
 }
 
-function disabledButton() {
+function disabledStopButton() {
   let b = document.getElementById("stop");
   b.setAttribute("disabled", "");
 }
 
-function abledButton() {
+function abledStopButton() {
   let b = document.getElementById("stop");
+  b.removeAttribute("disabled");
+}
+
+function disabledStartButton() {
+  let b = document.getElementById("start");
+  b.setAttribute("disabled", "");
+}
+
+function abledStartButton() {
+  let b = document.getElementById("start");
   b.removeAttribute("disabled");
 }
 
@@ -338,8 +369,8 @@ function reloadGame() {
   if (wallet > -1) {
     resetGame(),
       setTimeout(() => {
-        return deletePlate();
-      }, 1000);
+        return deletePlate(), abledStartButton();
+      }, 3000);
   } else finish();
 }
 
@@ -352,7 +383,7 @@ buttonStart.addEventListener("click", function() {
       setAddBtn(),
       printWalletFirst(),
       printModalBet(),
-      abledButton()
+      abledStopButton()
     );
   } else return addPlayersCard(), countPlayerScore(), playerCheckScore();
 });
@@ -363,9 +394,10 @@ buttonStop.addEventListener("click", function() {
     croupierLoop(),
     printVs(),
     discoverFirst(),
-    disabledButton(),
+    disabledStopButton(),
     setStartBtn(),
-    reloadGame()
+    reloadGame(),
+    disabledStartButton()
   );
 });
 
